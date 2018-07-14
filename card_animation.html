@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>Test</title>
+		<style type="text/css">
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	background-color: #43516C;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #A8E7FF;
+	width: 500px;
+	margin: 0 auto;
+	padding-top: 2rem;
+	padding-right: 1rem;
+	padding-bottom: 2rem;
+	padding-left: 1rem;
+	min-height: 100%;
+}
+
+.card {
+	background-color: white;
+	margin: 0;
+	padding: 1rem;
+	border-radius: 3px;
+	height: 10%;
+	overflow: hidden;
+
+	transition: all 0.2s ease;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+}
+
+.card:hover {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card.focused {
+	margin-left: -1rem;
+	margin-right: -1rem;
+	box-shadow: none;
+	height: 100%;
+}
+
+.card.focused:hover {
+	box-shadow: none;
+}
+
+.container .card {
+	margin-bottom: 2rem;
+}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card">
+				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+				<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+			</div>
+			<div class="card">
+				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+				<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.card').click(function(){
+					$(this).toggleClass('focused');
+
+					$('html, body').animate({
+						scrollTop: $(this).offset().top
+					}, 200);
+				});
+			});
+		</script>
+	</body>
+</html>
