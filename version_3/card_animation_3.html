@@ -30,7 +30,7 @@ body {
 }
 
 .focused > .card {
-	height: 12rem;
+	height: 100%;
 }
 		</style>
 	</head>
@@ -80,12 +80,19 @@ body {
 			$(document).ready(function(){
 				$('.row > *').click(function(){
 					var element = $(this);
+					// already focused, so unfocus it and unhide its siblings
 					if (element.hasClass('focused')){
 						element.parent().children().removeClass('hidden');
 						element.removeClass('focused');
+
+					// not yet focused, so unfocus and hide its siblings and focus it
+					// also scroll to it if possible.
 					} else {
 						element.parent().children().addClass('hidden').removeClass('focused');
 						element.removeClass('hidden').addClass('focused');
+						$('html, body').animate({
+							scrollTop: $(this).offset().top
+						}, 200);
 					}
 				});
 			});
