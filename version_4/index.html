@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<title>Test</title>
+		<link rel="stylesheet" type="text/css" href="grid.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<style type="text/css">
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #bdc3c7;
+}
+
+.container {
+	background-color: #bdc3c7;
+}
+
+.container > .row > * {
+	overflow: hidden;
+	min-width: 0;
+}
+
+.card {
+	min-width:0;
+	height: 6rem;
+	line-height: 3rem;
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+	background-color: white;
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#focused_card {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	line-height: 3rem;
+	display: none;
+	background-color: white;
+	border-radius: 3px;
+	padding: 0.5rem 1rem;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="card">Card 1</div>
+				</div>
+				<div class="col">
+					<div class="card">Card 2</div>
+				</div>
+				<div class="col">
+					<div class="card">Card 3</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="card">Card 4</div>
+				</div>
+				<div class="col">
+					<div class="card">Card 5</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="card">Card 6</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<div class="card">Card 7</div>
+				</div>
+				<div class="col">
+					<div class="card">Card 8</div>
+				</div>
+				<div class="col">
+					<div class="card">Card 9</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="focused_card" class="focused_card">Focused card</div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.row > *').click(function(){
+					var element = $(this);
+					
+					var offset = element.offset();
+					var element_top = offset.top - $(document).scrollTop();
+					var element_left = offset.left - $(document).scrollLeft();
+
+					var element_width = element.width();
+					var element_height = element.height();
+
+					var viewport_width = $(window).width();
+					var viewport_height = $(window).height();
+
+					var element_right = viewport_width - (element_left + element_width);
+					var element_bottom = viewport_height - (element_top + element_height);
+
+					var focused_card = $('#focused_card');
+					focused_card.css('top', element_top);
+					focused_card.css('right', element_right);
+					focused_card.css('bottom', element_bottom);
+					focused_card.css('left', element_left);
+					focused_card.css('display', 'block');
+
+					focused_card.animate({
+						left: 16,
+						right: 16,
+						top: 16,
+						bottom: 16,
+					}, 200);
+				});
+
+				$('#focused_card').click(function(){
+					$(this).css('display', 'none');
+				});
+			});
+		</script>
+	</body>
+</html>

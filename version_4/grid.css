@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0.5rem;
+}
+
+.container > .row {
+	display: flex;
+}
+
+.container > .row > * {
+	min-width: 0;
+}
+
+.container > .row > .col {
+	flex: 1;
+}
+
+.container > .row > .col-2 {
+	flex: 2;
+}
+
+.container > .row > .col-3 {
+	flex: 3;
+}
