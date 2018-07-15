@@ -1,0 +1,11 @@
+.container > .row {
+	display: flex;
+}
+
+.container > .row > * {
+	transition: flex 0.2s ease;
+}
+
+.container > .row > .hidden {
+	flex: 0;
+}
